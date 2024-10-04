@@ -11,7 +11,7 @@ const getAllUsersHandler = (req,res) =>{
         res.send(response);
     }
 }; 
-
+// comentario
 const getOneUserHandler = (req, res)=>{
     const {id} = req.params;
     res.send(`este es un usuario con id: ${id}`);
