@@ -15,18 +15,25 @@ const getAllUsersController = () =>{
     return users;
 };
 
-const getOneUserController = (id) =>{
-   const userById = users.filter((user) => user.id === id);
-   console.log(userById);
+
+//preguntar porque no funciona con id ???
+const getOneUserController = (name) =>{
+   const userByName = users.filter((user) => user.name === name);
+   console.log(userByName);
+   return userByName;
 };
 
-
+const getOneUserByIdController = (id) =>{
+    const userById = user.find(user => user.id == id );
+    console.log(userById)
+}
 
 
 module.exports = {
     createUserController,
     getAllUsersController,
-    getOneUserController
+    getOneUserController,
+    getOneUserByIdController
 };
 
 

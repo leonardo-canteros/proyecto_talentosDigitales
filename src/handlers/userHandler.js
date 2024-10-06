@@ -1,20 +1,23 @@
-const { createUserController, getAllUsersController, getOneUserController } = require("../controller/usersControler");
+const { createUserController, getAllUsersController, getOneUserController, getOneUserById, getOneUserByIdController } = require("../controller/usersController");
 
 const getAllUsersHandler = (req,res) =>{
-    const{id} = req.query;
-    if (id){
-        const response = getOneUserController(id);
-        res.send(`el esusarios es ${id}`);
+    const{name} = req.query;
+    if (name){
+        const response = getOneUserController(name);
+        res.status(200).send(response);
     }else{
-        const response = getAllUsersController();
-        console.log(response);
-        res.send(response);
+        const response2 = getAllUsersController();
+        console.log(response2);
+        res.send(response2);
     }
 }; 
+
+
 // comentario
 const getOneUserHandler = (req, res)=>{
     const {id} = req.params;
-    res.send(`este es un usuario con id: ${id}`);
+    const response = getOneUserByIdController(id);
+    res.send(`este es un usuario con id: ${response}`);
 };
 
 const createUsersHandler = (req, res)=>{
