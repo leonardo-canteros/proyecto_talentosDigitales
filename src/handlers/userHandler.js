@@ -1,4 +1,4 @@
-const { createUserController, getAllUsersController, getOneUserController, getOneUserById, getOneUserByIdController } = require("../controller/usersController");
+const { createUserController, getAllUsersController, getOneUserController, getOneUserByIdController, updateOneUserController } = require("../controller/usersController");
 
 const getAllUsersHandler = (req,res) =>{
     const{name} = req.query;
@@ -7,7 +7,6 @@ const getAllUsersHandler = (req,res) =>{
         res.status(200).send(response);
     }else{
         const response2 = getAllUsersController();
-        console.log(response2);
         res.send(response2);
     }
 }; 
@@ -17,7 +16,7 @@ const getAllUsersHandler = (req,res) =>{
 const getOneUserHandler = (req, res)=>{
     const {id} = req.params;
     const response = getOneUserByIdController(id);
-    res.send(`este es un usuario con id: ${response}`);
+    res.send(`este es un usuario con id: ${id}`);
 };
 
 const createUsersHandler = (req, res)=>{
@@ -26,8 +25,11 @@ const createUsersHandler = (req, res)=>{
     res.send(response);
 };
 
-const putUneUserHandler = (req, res) => {
-    res.send("modificar un usuario");
+const updateUneUserHandler = (req, res) => {
+    const {id} = req.params;
+    const {name,username,email} = req.body;
+    const response = updateOneUserController(id, name, username, email);
+    res.send(response);
 };
 
 const deletUserhandler = (req, res)=>{
@@ -39,7 +41,7 @@ module.exports = {
     getAllUsersHandler,
     getOneUserHandler ,
     createUsersHandler,
-    putUneUserHandler,
+    updateUneUserHandler,
     deletUserhandler,
 };
 
