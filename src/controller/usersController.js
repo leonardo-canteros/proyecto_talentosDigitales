@@ -1,8 +1,6 @@
 const {users} = require('../db/dataBase');
 const bcrypt = require ('bcryptjs');
 
-
-
 const createUserController = async (name, username,email,password,role) =>{
     const id = users.length + 1;
     const hashPassword = await bcrypt.hash(password, 10);
@@ -34,8 +32,10 @@ const getOneUserByIdController = (id) =>{
 
 
 const updateOneUserController = (id , name, username, email) => {
-    const newUser = (name, username, email); 
+    const newUser = {name, username, email};
+    console.log(newUser);
     const userUpdate = users.find((user) => user.id ===  Number(id) );
+   
     if( !id || !name ||  !username || !email)throw new Error("faltan datos");
 
     if(userUpdate){

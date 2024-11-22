@@ -53,7 +53,7 @@ const createProductHandler = async (req, res)=>{
 };
 
 const updateProductHandler = (req, res) => {
-   // const { idError } = idSchema.validate(req.params);
+    // const { idError } = idSchema.validate(req.params);
     //if (idError) {
     //    return res.status(400).send(idError.details[0].message); 
     //}
@@ -70,9 +70,9 @@ const updateProductHandler = (req, res) => {
 
 const deletProducthandler = (req, res)=>{
     //const { idError } = idSchema.validate(req.params);
-    if (idError) {
+    /*if (idError) {
         return res.status(400).send(idError.details[0].message); 
-    }
+    }*/
    try {
         const {id} = req.params;
         const response = deleteProductController(id);
